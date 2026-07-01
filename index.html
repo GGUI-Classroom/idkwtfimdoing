@@ -3,93 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Boots n Cats n</title>
+  <title>Phone Vibe Massager</title>
   <style>
     :root{
-      --bg1:#0b0b18;
-      --bg2:#181833;
+      --bg1:#090913;
+      --bg2:#17172b;
       --text:#fff;
-      --muted:rgba(255,255,255,.7);
+      --muted:rgba(255,255,255,.68);
       --line:rgba(255,255,255,.16);
-      --hot:#8b5cff;
-      --hot2:#00d9ff;
-      --hot3:#ff5fa2;
       --card:rgba(255,255,255,.08);
+      --a:#7c5cff;
+      --b:#00e5ff;
+      --c:#44ffb0;
+      --d:#ff5fa2;
     }
 
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     html,body{margin:0;min-height:100%}
     body{
       min-height:100svh;
+      padding:20px;
       display:grid;
       place-items:center;
-      padding:20px;
       color:var(--text);
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
       background:
-        radial-gradient(circle at 20% 10%, rgba(139,92,255,.35), transparent 32%),
-        radial-gradient(circle at 80% 20%, rgba(0,217,255,.25), transparent 35%),
-        radial-gradient(circle at 50% 100%, rgba(255,95,162,.18), transparent 35%),
+        radial-gradient(circle at 20% 8%, rgba(124,92,255,.32), transparent 34%),
+        radial-gradient(circle at 85% 20%, rgba(0,229,255,.24), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(68,255,176,.12), transparent 34%),
         linear-gradient(135deg,var(--bg1),var(--bg2));
-      overflow:hidden;
+      overflow-x:hidden;
     }
 
     .wrap{
-      width:min(560px,100%);
+      width:min(580px,100%);
       position:relative;
     }
 
-    .halo{
+    .glow{
       position:absolute;
-      inset:-60px;
-      border-radius:999px;
-      filter:blur(40px);
-      opacity:.32;
+      inset:-70px;
       z-index:-1;
-      background:conic-gradient(from 180deg, var(--hot), transparent, var(--hot2), transparent, var(--hot3), var(--hot));
-      animation:spin 9s linear infinite;
+      filter:blur(45px);
+      opacity:.32;
+      border-radius:999px;
+      background:conic-gradient(from 190deg,var(--a),transparent,var(--b),transparent,var(--c),var(--a));
+      animation:spin 12s linear infinite;
     }
 
     .card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
       border-radius:30px;
       padding:26px;
+      background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055));
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
       box-shadow:0 26px 70px rgba(0,0,0,.35);
     }
 
     .head{
       display:flex;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
       gap:14px;
-      margin-bottom:16px;
+      margin-bottom:20px;
     }
 
     .logo{
-      width:54px;height:54px;border-radius:18px;
-      display:grid;place-items:center;
-      font-size:24px;font-weight:900;
-      background:linear-gradient(135deg,var(--hot),var(--hot2));
-      box-shadow:0 0 28px rgba(0,217,255,.25);
+      width:56px;height:56px;
+      border-radius:19px;
+      display:grid;
+      place-items:center;
+      font-size:25px;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--a),var(--b));
+      box-shadow:0 0 34px rgba(0,229,255,.24);
     }
 
     .badge{
-      font-size:13px;
       color:var(--muted);
+      font-size:13px;
       padding:8px 12px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(0,0,0,.15);
+      background:rgba(0,0,0,.14);
     }
 
     h1{
       margin:0 0 10px;
-      font-size:clamp(34px, 10vw, 62px);
-      line-height:.92;
-      letter-spacing:-.06em;
+      font-size:clamp(35px,10vw,66px);
+      line-height:.9;
+      letter-spacing:-.065em;
     }
 
     p{
@@ -100,216 +104,193 @@
     }
 
     .stage{
-      margin:28px 0 18px;
-      height:250px;
-      position:relative;
+      height:220px;
       display:grid;
       place-items:center;
+      position:relative;
+      margin:28px 0 20px;
+    }
+
+    .orb{
+      width:128px;height:128px;border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 27%, white, rgba(255,255,255,.3) 17%, transparent 33%),
+        linear-gradient(135deg,var(--a),var(--b));
+      box-shadow:0 0 55px rgba(124,92,255,.52),0 0 110px rgba(0,229,255,.18);
+      transform:scale(.94);
+      transition:transform .12s ease, filter .12s ease;
     }
 
     .ring{
       position:absolute;
       border-radius:50%;
-      border:1px solid rgba(255,255,255,.16);
-      animation:breathe 2.4s ease-in-out infinite;
+      border:1px solid rgba(255,255,255,.15);
+      animation:breathe 2.3s ease-in-out infinite;
     }
-    .ring.r1{width:150px;height:150px}
-    .ring.r2{width:195px;height:195px;opacity:.55;animation-delay:.25s}
-    .ring.r3{width:240px;height:240px;opacity:.3;animation-delay:.5s}
+    .r1{width:155px;height:155px}
+    .r2{width:205px;height:205px;opacity:.5;animation-delay:.28s}
 
-    .core{
-      width:126px;height:126px;border-radius:50%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.28) 18%, transparent 34%),
-        linear-gradient(135deg,var(--hot),var(--hot2));
-      box-shadow:0 0 50px rgba(139,92,255,.5), 0 0 90px rgba(0,217,255,.18);
-      transform:scale(.94);
-      transition:transform .11s ease, filter .11s ease;
-    }
-
-    .bars{
+    .timer{
       position:absolute;
-      bottom:14px;
-      display:flex;
-      align-items:flex-end;
-      gap:8px;
-      height:64px;
-    }
-
-    .bar{
-      width:10px;
-      height:14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.38);
-      transition:height .09s ease, background .09s ease;
-    }
-
-    .phrase{
-      margin-top:-2px;
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      min-height:48px;
-    }
-
-    .token{
-      min-width:88px;
-      text-align:center;
-      padding:10px 14px;
-      border-radius:16px;
+      bottom:0;
+      font-size:28px;
       font-weight:900;
-      letter-spacing:.04em;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      color:rgba(255,255,255,.86);
-      transform:scale(1);
-      transition:transform .12s ease, background .12s ease, box-shadow .12s ease, color .12s ease;
+      letter-spacing:-.04em;
+      color:rgba(255,255,255,.9);
     }
 
-    .token.active{
-      background:linear-gradient(135deg, rgba(139,92,255,.6), rgba(0,217,255,.45));
+    .modes{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin:18px 0 14px;
+    }
+
+    .mode{
+      min-height:58px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.08);
       color:#fff;
-      transform:scale(1.07);
-      box-shadow:0 0 24px rgba(0,217,255,.18);
+      padding:12px;
+      text-align:left;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
+      touch-action:manipulation;
+    }
+    .mode:active{transform:scale(.975)}
+    .mode strong{display:block;font-size:15px;margin-bottom:2px}
+    .mode span{display:block;font-size:12.5px;color:var(--muted)}
+    .mode.active{
+      background:linear-gradient(135deg,rgba(124,92,255,.55),rgba(0,229,255,.28));
+      box-shadow:0 0 24px rgba(0,229,255,.15);
     }
 
     .status{
-      margin-top:16px;
-      min-height:48px;
-      padding:13px 15px;
-      border-radius:16px;
+      min-height:50px;
+      border-radius:17px;
       border:1px solid var(--line);
       background:rgba(0,0,0,.14);
       color:var(--muted);
+      padding:13px 15px;
       font-size:14px;
-      line-height:1.5;
+      line-height:1.45;
     }
 
     .controls{
-      margin-top:16px;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
+      margin-top:14px;
     }
 
     button{
       min-height:58px;
-      border:0;
-      cursor:pointer;
+      border:1px solid rgba(255,255,255,.14);
       border-radius:18px;
-      padding:14px 16px;
+      color:white;
       font-size:16px;
       font-weight:850;
-      color:#fff;
-      transition:transform .12s ease, opacity .12s ease;
+      cursor:pointer;
+      padding:14px 16px;
+      background:rgba(255,255,255,.1);
       touch-action:manipulation;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.11);
+      transition:transform .12s ease, opacity .12s ease;
     }
     button:active{transform:scale(.975)}
-    .accept{
+    .start{
       grid-column:1/-1;
-      background:linear-gradient(135deg,var(--hot),var(--hot2));
-      box-shadow:0 14px 32px rgba(0,217,255,.18);
+      background:linear-gradient(135deg,var(--a),var(--b));
+      box-shadow:0 14px 32px rgba(0,229,255,.18);
     }
     .stop{background:rgba(255,95,162,.16)}
-    .test{background:rgba(255,255,255,.09)}
+    .plus,.minus{background:rgba(68,255,176,.10)}
     .disabled{opacity:.45;pointer-events:none}
 
     .tiny{
       margin-top:16px;
       text-align:center;
-      color:rgba(255,255,255,.5);
+      color:rgba(255,255,255,.48);
       font-size:12.5px;
+      line-height:1.45;
     }
 
-    body.playing .core{
-      animation:pulse 390ms ease-in-out infinite;
+    body.running .orb{
+      animation:pulse .55s ease-in-out infinite;
       filter:saturate(1.2);
     }
 
-    body.playing .bar:nth-child(1){animation:dance 400ms ease-in-out infinite}
-    body.playing .bar:nth-child(2){animation:dance 270ms ease-in-out infinite 30ms}
-    body.playing .bar:nth-child(3){animation:dance 520ms ease-in-out infinite 50ms}
-    body.playing .bar:nth-child(4){animation:dance 310ms ease-in-out infinite 10ms}
-    body.playing .bar:nth-child(5){animation:dance 470ms ease-in-out infinite 70ms}
-    body.playing .bar:nth-child(6){animation:dance 350ms ease-in-out infinite 20ms}
-    body.playing .bar:nth-child(7){animation:dance 580ms ease-in-out infinite 80ms}
-    body.playing .bar:nth-child(8){animation:dance 290ms ease-in-out infinite 20ms}
-
     @keyframes pulse{
       0%,100%{transform:scale(.94)}
-      45%{transform:scale(1.07)}
+      45%{transform:scale(1.08)}
     }
     @keyframes breathe{
-      0%,100%{transform:scale(.92);opacity:.18}
-      50%{transform:scale(1.12);opacity:.55}
-    }
-    @keyframes dance{
-      0%,100%{height:14px;background:rgba(255,255,255,.38)}
-      50%{height:58px;background:rgba(0,217,255,.9);box-shadow:0 0 18px rgba(0,217,255,.45)}
+      0%,100%{transform:scale(.92);opacity:.16}
+      50%{transform:scale(1.14);opacity:.55}
     }
     @keyframes spin{to{transform:rotate(360deg)}}
 
-    @media (max-width:430px){
+    @media(max-width:450px){
       .card{padding:22px;border-radius:24px}
-      .controls{grid-template-columns:1fr}
-      .accept{grid-column:auto}
-      .token{min-width:74px}
+      .modes,.controls{grid-template-columns:1fr}
+      .start{grid-column:auto}
     }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <div class="halo"></div>
+    <div class="glow"></div>
+
     <section class="card">
       <div class="head">
-        <div class="logo">B♩</div>
+        <div class="logo">〰</div>
         <div class="badge" id="supportBadge">Checking vibration...</div>
       </div>
 
-      <h1>Boots n<br>Cats n</h1>
+      <h1>Vibe<br>Massager</h1>
       <p>
-        Tap accept and your phone will buzz a “boots n cats n” beat using the vibration motor.
+        Pick a pattern, tap start, and your phone will use its vibration motor like a tiny massager.
       </p>
 
       <div class="stage" aria-hidden="true">
         <div class="ring r1"></div>
         <div class="ring r2"></div>
-        <div class="ring r3"></div>
-        <div class="core"></div>
-        <div class="bars">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
+        <div class="orb"></div>
+        <div class="timer" id="timer">01:00</div>
       </div>
 
-      <div class="phrase">
-        <div class="token" id="t0">BOOTS</div>
-        <div class="token" id="t1">n</div>
-        <div class="token" id="t2">CATS</div>
-        <div class="token" id="t3">n</div>
+      <div class="modes" id="modes">
+        <button class="mode active" data-mode="wave">
+          <strong>Wave</strong>
+          <span>Smooth rolling pulses</span>
+        </button>
+        <button class="mode" data-mode="deep">
+          <strong>Deep</strong>
+          <span>Longer stronger buzzes</span>
+        </button>
+        <button class="mode" data-mode="tap">
+          <strong>Tap</strong>
+          <span>Fast tapping pattern</span>
+        </button>
+        <button class="mode" data-mode="steady">
+          <strong>Steady-ish</strong>
+          <span>Repeated short loops</span>
+        </button>
       </div>
 
       <div class="status" id="status">
-        Ready. Tap Accept to start the “boots n cats n” vibration beat.
+        Ready. Choose a mode and press Start.
       </div>
 
       <div class="controls">
-        <button class="accept" id="acceptBtn">Accept & Play</button>
-        <button class="test" id="testBtn">Test Buzz</button>
+        <button class="start" id="startBtn">Start Massage</button>
+        <button class="minus" id="minusBtn">- 15 sec</button>
+        <button class="plus" id="plusBtn">+ 15 sec</button>
         <button class="stop disabled" id="stopBtn">Stop</button>
       </div>
 
       <div class="tiny">
-        Best on Android browsers. iPhone browsers often do not allow web vibration.
+        Do not use it for a long time. Stop if your phone gets warm or it feels uncomfortable. Web vibration support depends on the phone/browser.
       </div>
     </section>
   </main>
@@ -317,150 +298,139 @@
   <script>
     const supportBadge = document.getElementById("supportBadge");
     const statusBox = document.getElementById("status");
-    const acceptBtn = document.getElementById("acceptBtn");
+    const timerBox = document.getElementById("timer");
+    const startBtn = document.getElementById("startBtn");
     const stopBtn = document.getElementById("stopBtn");
-    const testBtn = document.getElementById("testBtn");
-    const tokens = [
-      document.getElementById("t0"),
-      document.getElementById("t1"),
-      document.getElementById("t2"),
-      document.getElementById("t3")
-    ];
+    const minusBtn = document.getElementById("minusBtn");
+    const plusBtn = document.getElementById("plusBtn");
+    const modeButtons = [...document.querySelectorAll(".mode")];
 
     const canVibrate = "vibrate" in navigator;
+
+    let selectedMode = "wave";
+    let totalSeconds = 60;
+    let secondsLeft = totalSeconds;
+    let running = false;
     let loopTimer = null;
-    let cueTimers = [];
-    let isPlaying = false;
+    let countdownTimer = null;
 
-    // A simple "boots n cats n" loop:
-    // BOOTS = longer kick pulse
-    // n     = tiny short pulse
-    // CATS  = medium snare pulse
-    // n     = tiny short pulse
-    // Repeat x2 in one phrase for a better groove.
-    const beatPattern = [
-      140, 90,   // BOOTS
-      24, 70,    // n
-      90, 95,    // CATS
-      24, 110,   // n
+    const patterns = {
+      wave:    [80, 45, 120, 55, 180, 70, 120, 55],
+      deep:    [260, 90, 260, 120, 360, 150],
+      tap:     [45, 35, 45, 35, 45, 70, 70, 55],
+      steady:  [180, 35, 180, 35, 180, 35]
+    };
 
-      140, 90,   // BOOTS
-      24, 70,    // n
-      90, 95,    // CATS
-      24, 180    // n, then phrase break
-    ];
-
-    // Visual cue timings for each spoken piece in the loop
-    const cues = [
-      { t: 0, token: 0 },
-      { t: 230, token: 1 },
-      { t: 324, token: 2 },
-      { t: 509, token: 3 },
-
-      { t: 643, token: 0 },
-      { t: 873, token: 1 },
-      { t: 967, token: 2 },
-      { t: 1152, token: 3 }
-    ];
-
-    function patternLength(pattern){
-      return pattern.reduce((a,b)=>a+b,0);
+    function formatTime(sec){
+      const m = Math.floor(sec / 60).toString().padStart(2, "0");
+      const s = (sec % 60).toString().padStart(2, "0");
+      return `${m}:${s}`;
     }
 
     function setStatus(msg){
       statusBox.textContent = msg;
     }
 
-    function clearActiveTokens(){
-      tokens.forEach(t => t.classList.remove("active"));
+    function updateTimer(){
+      timerBox.textContent = formatTime(secondsLeft);
     }
 
-    function pulseToken(index){
-      clearActiveTokens();
-      tokens[index].classList.add("active");
-      setTimeout(() => tokens[index].classList.remove("active"), 170);
+    function patternLength(pattern){
+      return pattern.reduce((a,b)=>a+b,0);
     }
 
-    function runVisualCues(){
-      cueTimers.forEach(id => clearTimeout(id));
-      cueTimers = [];
-      cues.forEach(cue => {
-        cueTimers.push(setTimeout(() => {
-          if (isPlaying) pulseToken(cue.token);
-        }, cue.t));
-      });
-    }
-
-    function doVibrate(pattern){
+    function vibrate(pattern){
       if (!canVibrate) return false;
       return navigator.vibrate(pattern);
     }
 
-    function playPhrase(){
-      document.body.classList.add("playing");
-      runVisualCues();
-      return doVibrate(beatPattern);
+    function runPattern(){
+      const pattern = patterns[selectedMode];
+      return vibrate(pattern);
     }
 
-    function startBeat(){
-      if (isPlaying) return;
-      isPlaying = true;
+    function startMassage(){
+      if (running) return;
 
-      acceptBtn.classList.add("disabled");
-      acceptBtn.textContent = "Playing";
+      running = true;
+      secondsLeft = totalSeconds;
+      document.body.classList.add("running");
+      startBtn.classList.add("disabled");
       stopBtn.classList.remove("disabled");
+      modeButtons.forEach(b => b.classList.add("disabled"));
+      updateTimer();
 
-      const ok = playPhrase();
-
+      const ok = runPattern();
       if (!canVibrate) {
-        setStatus("This browser does not support vibration, so only the visual beat is playing.");
+        setStatus("This browser does not support vibration, so only the animation is running.");
       } else if (ok) {
-        setStatus('Playing: "boots n cats n". Keep this page open.');
+        setStatus(`Running ${selectedMode} mode. It will auto-stop at ${formatTime(totalSeconds)}.`);
       } else {
         setStatus("The vibration request was sent, but this device/browser may not actually vibrate.");
       }
 
-      const loopLen = patternLength(beatPattern) + 60;
       loopTimer = setInterval(() => {
-        if (!isPlaying) return;
-        playPhrase();
-      }, loopLen);
+        if (!running) return;
+        runPattern();
+      }, patternLength(patterns[selectedMode]) + 60);
+
+      countdownTimer = setInterval(() => {
+        if (!running) return;
+        secondsLeft--;
+        updateTimer();
+
+        if (secondsLeft <= 0) {
+          stopMassage("Auto-stopped. You can start again after a break.");
+        }
+      }, 1000);
     }
 
-    function stopBeat(){
-      isPlaying = false;
+    function stopMassage(message = "Stopped."){
+      running = false;
       clearInterval(loopTimer);
-      cueTimers.forEach(id => clearTimeout(id));
-      cueTimers = [];
-      clearActiveTokens();
-      document.body.classList.remove("playing");
+      clearInterval(countdownTimer);
+      document.body.classList.remove("running");
+
       if (canVibrate) navigator.vibrate(0);
 
-      acceptBtn.classList.remove("disabled");
-      acceptBtn.textContent = "Accept & Play";
+      startBtn.classList.remove("disabled");
       stopBtn.classList.add("disabled");
-      setStatus('Stopped. Tap Accept to play "boots n cats n" again.');
+      modeButtons.forEach(b => b.classList.remove("disabled"));
+      secondsLeft = totalSeconds;
+      updateTimer();
+      setStatus(message);
     }
 
-    function testBuzz(){
-      if (!canVibrate){
-        setStatus("No vibration support detected on this browser/device.");
-        return;
-      }
-      navigator.vibrate([120, 60, 35]);
-      pulseToken(0);
-      setStatus("Test buzz sent.");
+    function changeTime(delta){
+      if (running) return;
+      totalSeconds = Math.max(15, Math.min(120, totalSeconds + delta));
+      secondsLeft = totalSeconds;
+      updateTimer();
+      setStatus(`Timer set to ${formatTime(totalSeconds)}.`);
     }
 
-    supportBadge.textContent = canVibrate ? "Vibration supported" : "No vibration support";
+    modeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        if (running) return;
 
-    acceptBtn.addEventListener("click", startBeat);
-    stopBtn.addEventListener("click", stopBeat);
-    testBtn.addEventListener("click", testBuzz);
+        selectedMode = button.dataset.mode;
+        modeButtons.forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+        setStatus(`Selected ${selectedMode} mode.`);
+      });
+    });
+
+    startBtn.addEventListener("click", startMassage);
+    stopBtn.addEventListener("click", () => stopMassage("Stopped."));
+    minusBtn.addEventListener("click", () => changeTime(-15));
+    plusBtn.addEventListener("click", () => changeTime(15));
 
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stopBeat();
+      if (document.hidden && running) stopMassage("Stopped because the page was hidden.");
     });
+
+    supportBadge.textContent = canVibrate ? "Vibration supported" : "No vibration support";
+    updateTimer();
   </script>
 </body>
 </html>
