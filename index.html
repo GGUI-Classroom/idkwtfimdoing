@@ -3,311 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>VibeBeat</title>
+  <title>Boots n Cats n</title>
   <style>
-    :root {
-      --bg1: #090916;
-      --bg2: #17172d;
-      --card: rgba(255, 255, 255, 0.08);
-      --line: rgba(255, 255, 255, 0.18);
-      --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.68);
-      --hot: #7c5cff;
-      --hot2: #00e5ff;
-      --danger: #ff4d8d;
-      --ok: #44ffb0;
+    :root{
+      --bg1:#0b0b18;
+      --bg2:#181833;
+      --text:#fff;
+      --muted:rgba(255,255,255,.7);
+      --line:rgba(255,255,255,.16);
+      --hot:#8b5cff;
+      --hot2:#00d9ff;
+      --hot3:#ff5fa2;
+      --card:rgba(255,255,255,.08);
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;min-height:100%}
+    body{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding:20px;
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
       background:
-        radial-gradient(circle at 20% 10%, rgba(124, 92, 255, 0.35), transparent 35%),
-        radial-gradient(circle at 80% 25%, rgba(0, 229, 255, 0.28), transparent 35%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      overflow-x: hidden;
+        radial-gradient(circle at 20% 10%, rgba(139,92,255,.35), transparent 32%),
+        radial-gradient(circle at 80% 20%, rgba(0,217,255,.25), transparent 35%),
+        radial-gradient(circle at 50% 100%, rgba(255,95,162,.18), transparent 35%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      overflow:hidden;
     }
 
-    body {
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      padding: 22px;
+    .wrap{
+      width:min(560px,100%);
+      position:relative;
     }
 
-    .shell {
-      width: min(560px, 100%);
-      position: relative;
+    .halo{
+      position:absolute;
+      inset:-60px;
+      border-radius:999px;
+      filter:blur(40px);
+      opacity:.32;
+      z-index:-1;
+      background:conic-gradient(from 180deg, var(--hot), transparent, var(--hot2), transparent, var(--hot3), var(--hot));
+      animation:spin 9s linear infinite;
     }
 
-    .glow {
-      position: absolute;
-      inset: -80px -30px;
-      pointer-events: none;
-      filter: blur(40px);
-      opacity: 0.35;
+    .card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-radius:30px;
+      padding:26px;
+      box-shadow:0 26px 70px rgba(0,0,0,.35);
+    }
+
+    .head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:16px;
+    }
+
+    .logo{
+      width:54px;height:54px;border-radius:18px;
+      display:grid;place-items:center;
+      font-size:24px;font-weight:900;
+      background:linear-gradient(135deg,var(--hot),var(--hot2));
+      box-shadow:0 0 28px rgba(0,217,255,.25);
+    }
+
+    .badge{
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.15);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(34px, 10vw, 62px);
+      line-height:.92;
+      letter-spacing:-.06em;
+    }
+
+    p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:16px;
+    }
+
+    .stage{
+      margin:28px 0 18px;
+      height:250px;
+      position:relative;
+      display:grid;
+      place-items:center;
+    }
+
+    .ring{
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.16);
+      animation:breathe 2.4s ease-in-out infinite;
+    }
+    .ring.r1{width:150px;height:150px}
+    .ring.r2{width:195px;height:195px;opacity:.55;animation-delay:.25s}
+    .ring.r3{width:240px;height:240px;opacity:.3;animation-delay:.5s}
+
+    .core{
+      width:126px;height:126px;border-radius:50%;
       background:
-        conic-gradient(from 220deg, var(--hot), transparent, var(--hot2), transparent, var(--danger), var(--hot));
-      animation: spin 10s linear infinite;
-      border-radius: 999px;
-      z-index: -1;
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.28) 18%, transparent 34%),
+        linear-gradient(135deg,var(--hot),var(--hot2));
+      box-shadow:0 0 50px rgba(139,92,255,.5), 0 0 90px rgba(0,217,255,.18);
+      transform:scale(.94);
+      transition:transform .11s ease, filter .11s ease;
     }
 
-    .card {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 32px;
-      padding: 28px;
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
-      overflow: hidden;
+    .bars{
+      position:absolute;
+      bottom:14px;
+      display:flex;
+      align-items:flex-end;
+      gap:8px;
+      height:64px;
     }
 
-    .top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 26px;
+    .bar{
+      width:10px;
+      height:14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.38);
+      transition:height .09s ease, background .09s ease;
     }
 
-    .logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      font-size: 26px;
-      background: linear-gradient(135deg, rgba(124, 92, 255, 0.95), rgba(0, 229, 255, 0.88));
-      box-shadow: 0 0 34px rgba(0, 229, 255, 0.32);
+    .phrase{
+      margin-top:-2px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      min-height:48px;
     }
 
-    .badge {
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: var(--muted);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      background: rgba(0, 0, 0, 0.15);
+    .token{
+      min-width:88px;
+      text-align:center;
+      padding:10px 14px;
+      border-radius:16px;
+      font-weight:900;
+      letter-spacing:.04em;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:rgba(255,255,255,.86);
+      transform:scale(1);
+      transition:transform .12s ease, background .12s ease, box-shadow .12s ease, color .12s ease;
     }
 
-    h1 {
-      font-size: clamp(39px, 10vw, 72px);
-      line-height: 0.9;
-      letter-spacing: -0.075em;
-      margin: 0 0 14px;
+    .token.active{
+      background:linear-gradient(135deg, rgba(139,92,255,.6), rgba(0,217,255,.45));
+      color:#fff;
+      transform:scale(1.07);
+      box-shadow:0 0 24px rgba(0,217,255,.18);
     }
 
-    p {
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.55;
-      margin: 0;
+    .status{
+      margin-top:16px;
+      min-height:48px;
+      padding:13px 15px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.14);
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
     }
 
-    .stage {
-      position: relative;
-      display: grid;
-      place-items: center;
-      margin: 34px 0 26px;
-      height: 210px;
+    .controls{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
     }
 
-    .orb {
-      width: 142px;
-      height: 142px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 28%, white, rgba(255, 255, 255, 0.35) 16%, transparent 31%),
-        linear-gradient(135deg, var(--hot), var(--hot2));
-      box-shadow:
-        0 0 55px rgba(124, 92, 255, 0.6),
-        0 0 100px rgba(0, 229, 255, 0.25);
-      transform: scale(0.92);
-      transition: transform 130ms ease, filter 130ms ease;
+    button{
+      min-height:58px;
+      border:0;
+      cursor:pointer;
+      border-radius:18px;
+      padding:14px 16px;
+      font-size:16px;
+      font-weight:850;
+      color:#fff;
+      transition:transform .12s ease, opacity .12s ease;
+      touch-action:manipulation;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.11);
+    }
+    button:active{transform:scale(.975)}
+    .accept{
+      grid-column:1/-1;
+      background:linear-gradient(135deg,var(--hot),var(--hot2));
+      box-shadow:0 14px 32px rgba(0,217,255,.18);
+    }
+    .stop{background:rgba(255,95,162,.16)}
+    .test{background:rgba(255,255,255,.09)}
+    .disabled{opacity:.45;pointer-events:none}
+
+    .tiny{
+      margin-top:16px;
+      text-align:center;
+      color:rgba(255,255,255,.5);
+      font-size:12.5px;
     }
 
-    .ring {
-      position: absolute;
-      width: 165px;
-      height: 165px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      animation: breathe 2.2s ease-in-out infinite;
+    body.playing .core{
+      animation:pulse 390ms ease-in-out infinite;
+      filter:saturate(1.2);
     }
 
-    .ring:nth-child(2) {
-      width: 205px;
-      height: 205px;
-      opacity: 0.5;
-      animation-delay: 0.35s;
+    body.playing .bar:nth-child(1){animation:dance 400ms ease-in-out infinite}
+    body.playing .bar:nth-child(2){animation:dance 270ms ease-in-out infinite 30ms}
+    body.playing .bar:nth-child(3){animation:dance 520ms ease-in-out infinite 50ms}
+    body.playing .bar:nth-child(4){animation:dance 310ms ease-in-out infinite 10ms}
+    body.playing .bar:nth-child(5){animation:dance 470ms ease-in-out infinite 70ms}
+    body.playing .bar:nth-child(6){animation:dance 350ms ease-in-out infinite 20ms}
+    body.playing .bar:nth-child(7){animation:dance 580ms ease-in-out infinite 80ms}
+    body.playing .bar:nth-child(8){animation:dance 290ms ease-in-out infinite 20ms}
+
+    @keyframes pulse{
+      0%,100%{transform:scale(.94)}
+      45%{transform:scale(1.07)}
     }
-
-    .bars {
-      position: absolute;
-      bottom: 7px;
-      display: flex;
-      align-items: end;
-      gap: 8px;
-      height: 58px;
+    @keyframes breathe{
+      0%,100%{transform:scale(.92);opacity:.18}
+      50%{transform:scale(1.12);opacity:.55}
     }
-
-    .bar {
-      width: 10px;
-      height: 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.42);
-      transition: height 90ms ease, background 90ms ease, box-shadow 90ms ease;
+    @keyframes dance{
+      0%,100%{height:14px;background:rgba(255,255,255,.38)}
+      50%{height:58px;background:rgba(0,217,255,.9);box-shadow:0 0 18px rgba(0,217,255,.45)}
     }
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-    .status {
-      min-height: 46px;
-      padding: 13px 15px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(0, 0, 0, 0.14);
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .controls {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
-      border-radius: 20px;
-      min-height: 58px;
-      padding: 14px 16px;
-      font-weight: 800;
-      font-size: 16px;
-      color: white;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      transition: transform 140ms ease, opacity 140ms ease, filter 140ms ease;
-      touch-action: manipulation;
-    }
-
-    button:active {
-      transform: scale(0.97);
-    }
-
-    .accept {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, var(--hot), var(--hot2));
-      box-shadow: 0 12px 32px rgba(0, 229, 255, 0.22);
-    }
-
-    .stop {
-      background: rgba(255, 77, 141, 0.16);
-    }
-
-    .test {
-      background: rgba(68, 255, 176, 0.13);
-    }
-
-    .disabled {
-      opacity: 0.42;
-      pointer-events: none;
-    }
-
-    .tiny {
-      margin-top: 18px;
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.52);
-      text-align: center;
-    }
-
-    body.playing .orb {
-      animation: pulse 360ms ease-in-out infinite;
-      filter: saturate(1.25);
-    }
-
-    body.playing .bar:nth-child(1) { animation: dance 420ms ease-in-out infinite; }
-    body.playing .bar:nth-child(2) { animation: dance 300ms ease-in-out infinite 40ms; }
-    body.playing .bar:nth-child(3) { animation: dance 520ms ease-in-out infinite 70ms; }
-    body.playing .bar:nth-child(4) { animation: dance 260ms ease-in-out infinite 20ms; }
-    body.playing .bar:nth-child(5) { animation: dance 430ms ease-in-out infinite 90ms; }
-    body.playing .bar:nth-child(6) { animation: dance 340ms ease-in-out infinite 60ms; }
-    body.playing .bar:nth-child(7) { animation: dance 600ms ease-in-out infinite 100ms; }
-    body.playing .bar:nth-child(8) { animation: dance 310ms ease-in-out infinite 10ms; }
-    body.playing .bar:nth-child(9) { animation: dance 470ms ease-in-out infinite 80ms; }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(0.92); }
-      45% { transform: scale(1.07); }
-    }
-
-    @keyframes breathe {
-      0%, 100% { transform: scale(0.9); opacity: 0.18; }
-      50% { transform: scale(1.14); opacity: 0.55; }
-    }
-
-    @keyframes dance {
-      0%, 100% {
-        height: 14px;
-        background: rgba(255, 255, 255, 0.42);
-        box-shadow: none;
-      }
-      50% {
-        height: 54px;
-        background: rgba(0, 229, 255, 0.9);
-        box-shadow: 0 0 18px rgba(0, 229, 255, 0.55);
-      }
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @media (max-width: 420px) {
-      .card {
-        padding: 22px;
-        border-radius: 26px;
-      }
-
-      .controls {
-        grid-template-columns: 1fr;
-      }
-
-      .accept {
-        grid-column: auto;
-      }
+    @media (max-width:430px){
+      .card{padding:22px;border-radius:24px}
+      .controls{grid-template-columns:1fr}
+      .accept{grid-column:auto}
+      .token{min-width:74px}
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <div class="glow"></div>
-
+  <main class="wrap">
+    <div class="halo"></div>
     <section class="card">
-      <div class="top">
-        <div class="logo">〽</div>
+      <div class="head">
+        <div class="logo">B♩</div>
         <div class="badge" id="supportBadge">Checking vibration...</div>
       </div>
 
-      <h1>Vibe<br>Beat</h1>
-      <p>Tap accept and your phone will play a little beat through the vibration motor. No audio, just haptics.</p>
+      <h1>Boots n<br>Cats n</h1>
+      <p>
+        Tap accept and your phone will buzz a “boots n cats n” beat using the vibration motor.
+      </p>
 
       <div class="stage" aria-hidden="true">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="orb"></div>
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+        <div class="core"></div>
         <div class="bars">
-          <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -319,137 +291,168 @@
         </div>
       </div>
 
+      <div class="phrase">
+        <div class="token" id="t0">BOOTS</div>
+        <div class="token" id="t1">n</div>
+        <div class="token" id="t2">CATS</div>
+        <div class="token" id="t3">n</div>
+      </div>
+
       <div class="status" id="status">
-        Ready. Tap Accept to start the haptic beat.
+        Ready. Tap Accept to start the “boots n cats n” vibration beat.
       </div>
 
       <div class="controls">
-        <button class="accept" id="acceptBtn">Accept & Play Beat</button>
+        <button class="accept" id="acceptBtn">Accept & Play</button>
         <button class="test" id="testBtn">Test Buzz</button>
         <button class="stop disabled" id="stopBtn">Stop</button>
       </div>
 
       <div class="tiny">
-        Best on Android Chrome / Samsung Internet. Some browsers or phones may ignore vibration.
+        Best on Android browsers. iPhone browsers often do not allow web vibration.
       </div>
     </section>
   </main>
 
   <script>
-    const statusBox = document.getElementById("status");
     const supportBadge = document.getElementById("supportBadge");
+    const statusBox = document.getElementById("status");
     const acceptBtn = document.getElementById("acceptBtn");
     const stopBtn = document.getElementById("stopBtn");
     const testBtn = document.getElementById("testBtn");
+    const tokens = [
+      document.getElementById("t0"),
+      document.getElementById("t1"),
+      document.getElementById("t2"),
+      document.getElementById("t3")
+    ];
 
     const canVibrate = "vibrate" in navigator;
-
-    let beatTimer = null;
-    let visualTimer = null;
+    let loopTimer = null;
+    let cueTimers = [];
     let isPlaying = false;
 
-    /*
-      Vibration patterns alternate:
-      [vibrate, pause, vibrate, pause, vibrate...]
-
-      Since vibration motors cannot play real notes, this makes a beat
-      using short and long pulses.
-    */
+    // A simple "boots n cats n" loop:
+    // BOOTS = longer kick pulse
+    // n     = tiny short pulse
+    // CATS  = medium snare pulse
+    // n     = tiny short pulse
+    // Repeat x2 in one phrase for a better groove.
     const beatPattern = [
-      90, 55,   35, 45,   35, 145,  // kick + tiny double
-      45, 60,   130, 120,           // snare
-      35, 45,   35, 55,   80, 175,  // hats + kick
-      45, 50,   45, 50,   160, 210, // roll + snare
-      95, 60,   35, 40,   35, 80,
-      140, 90,  55, 45,   55, 160,
-      35, 35,   35, 35,   35, 35,   180, 260
+      140, 90,   // BOOTS
+      24, 70,    // n
+      90, 95,    // CATS
+      24, 110,   // n
+
+      140, 90,   // BOOTS
+      24, 70,    // n
+      90, 95,    // CATS
+      24, 180    // n, then phrase break
     ];
 
-    const fillPattern = [
-      35, 30, 35, 30, 35, 30, 35, 30,
-      70, 45, 70, 45, 180
+    // Visual cue timings for each spoken piece in the loop
+    const cues = [
+      { t: 0, token: 0 },
+      { t: 230, token: 1 },
+      { t: 324, token: 2 },
+      { t: 509, token: 3 },
+
+      { t: 643, token: 0 },
+      { t: 873, token: 1 },
+      { t: 967, token: 2 },
+      { t: 1152, token: 3 }
     ];
 
-    function setStatus(message) {
-      statusBox.textContent = message;
+    function patternLength(pattern){
+      return pattern.reduce((a,b)=>a+b,0);
     }
 
-    function beatLength(pattern) {
-      return pattern.reduce((total, ms) => total + ms, 0);
+    function setStatus(msg){
+      statusBox.textContent = msg;
     }
 
-    function flashOrb() {
-      document.body.classList.add("playing");
-      clearTimeout(visualTimer);
-      visualTimer = setTimeout(() => {
-        if (!isPlaying) document.body.classList.remove("playing");
-      }, 350);
+    function clearActiveTokens(){
+      tokens.forEach(t => t.classList.remove("active"));
     }
 
-    function vibrate(pattern) {
+    function pulseToken(index){
+      clearActiveTokens();
+      tokens[index].classList.add("active");
+      setTimeout(() => tokens[index].classList.remove("active"), 170);
+    }
+
+    function runVisualCues(){
+      cueTimers.forEach(id => clearTimeout(id));
+      cueTimers = [];
+      cues.forEach(cue => {
+        cueTimers.push(setTimeout(() => {
+          if (isPlaying) pulseToken(cue.token);
+        }, cue.t));
+      });
+    }
+
+    function doVibrate(pattern){
       if (!canVibrate) return false;
       return navigator.vibrate(pattern);
     }
 
-    function playOnce(pattern = beatPattern) {
-      flashOrb();
-      return vibrate(pattern);
+    function playPhrase(){
+      document.body.classList.add("playing");
+      runVisualCues();
+      return doVibrate(beatPattern);
     }
 
-    function startBeat() {
+    function startBeat(){
       if (isPlaying) return;
-
       isPlaying = true;
-      document.body.classList.add("playing");
-      stopBtn.classList.remove("disabled");
-      acceptBtn.textContent = "Beat Playing";
+
       acceptBtn.classList.add("disabled");
+      acceptBtn.textContent = "Playing";
+      stopBtn.classList.remove("disabled");
+
+      const ok = playPhrase();
 
       if (!canVibrate) {
-        setStatus("Your browser does not support vibration, so only the animation is playing.");
+        setStatus("This browser does not support vibration, so only the visual beat is playing.");
+      } else if (ok) {
+        setStatus('Playing: "boots n cats n". Keep this page open.');
       } else {
-        const worked = playOnce(beatPattern);
-        setStatus(worked ? "Playing haptic beat. Keep this page open." : "The browser accepted the tap, but this device may not vibrate.");
+        setStatus("The vibration request was sent, but this device/browser may not actually vibrate.");
       }
 
-      const loopDelay = beatLength(beatPattern) + 120;
-
-      beatTimer = setInterval(() => {
+      const loopLen = patternLength(beatPattern) + 60;
+      loopTimer = setInterval(() => {
         if (!isPlaying) return;
-        playOnce(beatPattern);
-      }, loopDelay);
+        playPhrase();
+      }, loopLen);
     }
 
-    function stopBeat() {
+    function stopBeat(){
       isPlaying = false;
-      clearInterval(beatTimer);
-      clearTimeout(visualTimer);
+      clearInterval(loopTimer);
+      cueTimers.forEach(id => clearTimeout(id));
+      cueTimers = [];
+      clearActiveTokens();
       document.body.classList.remove("playing");
-
       if (canVibrate) navigator.vibrate(0);
 
-      stopBtn.classList.add("disabled");
       acceptBtn.classList.remove("disabled");
-      acceptBtn.textContent = "Accept & Play Beat";
-      setStatus("Stopped. Tap Accept to play it again.");
+      acceptBtn.textContent = "Accept & Play";
+      stopBtn.classList.add("disabled");
+      setStatus('Stopped. Tap Accept to play "boots n cats n" again.');
     }
 
-    function testBuzz() {
-      if (!canVibrate) {
-        setStatus("This browser does not expose navigator.vibrate, so the test buzz cannot run.");
+    function testBuzz(){
+      if (!canVibrate){
+        setStatus("No vibration support detected on this browser/device.");
         return;
       }
-
-      const worked = vibrate(fillPattern);
-      flashOrb();
-      setStatus(worked ? "Test buzz sent." : "The vibration command returned false on this device.");
+      navigator.vibrate([120, 60, 35]);
+      pulseToken(0);
+      setStatus("Test buzz sent.");
     }
 
-    if (canVibrate) {
-      supportBadge.textContent = "Vibration supported";
-    } else {
-      supportBadge.textContent = "No vibration support";
-    }
+    supportBadge.textContent = canVibrate ? "Vibration supported" : "No vibration support";
 
     acceptBtn.addEventListener("click", startBeat);
     stopBtn.addEventListener("click", stopBeat);
